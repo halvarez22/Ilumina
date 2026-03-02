@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;900&display=swap');
+
+.mercury-hero-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  padding: 48px 0 24px 0;
+  position: relative;
+  z-index: 2;
+}
+
+svg.defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.mercury-title {
+  font-family: 'Futura', 'Montserrat', Arial, sans-serif;
+  font-size: 4.5rem;
+  font-weight: 900;
+  color: #FFD700;
+  text-shadow:
+    1px 1px 3px rgba(0, 0, 0, 0.6),
+    -1px -1px 5px rgba(255, 215, 0, 0.6),
+    0 0 12px rgba(255, 215, 0, 0.9),
+    0 0 25px rgba(255, 215, 0, 0.8);
+  background: linear-gradient(45deg, #DAA520, #FFD700, #DAA520);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  animation: shimmer 2s infinite, pulse 3s infinite;
+  filter: url(#liquid);
+  margin: 0;
+  text-align: center;
+}
+
+.mercury-subtitle {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: #d9d9d9;
+  text-shadow:
+    0 0 5px rgba(255, 255, 255, 0.8),
+    0 0 10px rgba(220, 220, 220, 0.6),
+    0 0 15px rgba(192, 192, 192, 0.4);
+  background: linear-gradient(45deg, #b0b0b0, #e0e0e0, #b0b0b0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin-top: 10px;
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 200% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6), -1px -1px 5px rgba(255, 215, 0, 0.6), 0 0 12px rgba(255, 215, 0, 0.9); }
+  50% { transform: scale(1.05); text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6), -1px -1px 5px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 1); }
+  100% { transform: scale(1); text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6), -1px -1px 5px rgba(255, 215, 0, 0.6), 0 0 12px rgba(255, 215, 0, 0.9); }
+} 

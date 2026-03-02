@@ -1,0 +1,72 @@
+# Configuración de MIME types para archivos TypeScript y React
+AddType application/javascript .js
+AddType application/javascript .jsx
+AddType application/javascript .ts
+AddType application/javascript .tsx
+
+# Configuración para archivos CSS
+AddType text/css .css
+
+# Configuración para archivos JSON
+AddType application/json .json
+
+# Configuración para archivos HTML
+AddType text/html .html
+
+# Configuración para archivos de imagen
+AddType image/svg+xml .svg
+AddType image/png .png
+AddType image/jpeg .jpg
+AddType image/jpeg .jpeg
+AddType image/gif .gif
+AddType image/webp .webp
+
+# Configuración para archivos de fuente
+AddType font/woff .woff
+AddType font/woff2 .woff2
+AddType font/ttf .ttf
+AddType font/otf .otf
+
+# Configuración para archivos de audio/video
+AddType audio/mpeg .mp3
+AddType video/mp4 .mp4 
+
+# Bloquear archivos sensibles (no deben ser accesibles desde la web)
+<IfModule mod_authz_core.c>
+  <FilesMatch "^\\.env">
+    Require all denied
+  </FilesMatch>
+  <FilesMatch "^\\.git">
+    Require all denied
+  </FilesMatch>
+</IfModule>
+<IfModule !mod_authz_core.c>
+  <FilesMatch "^\\.env">
+    Order allow,deny
+    Deny from all
+  </FilesMatch>
+  <FilesMatch "^\\.git">
+    Order allow,deny
+    Deny from all
+  </FilesMatch>
+</IfModule>
+
+# Bloquear endpoints de prueba/diagnóstico en producción
+<IfModule mod_authz_core.c>
+  <FilesMatch "^(debug_|test_).+\\.php$">
+    Require all denied
+  </FilesMatch>
+  <FilesMatch "^debug_.+\\.txt$">
+    Require all denied
+  </FilesMatch>
+</IfModule>
+<IfModule !mod_authz_core.c>
+  <FilesMatch "^(debug_|test_).+\\.php$">
+    Order allow,deny
+    Deny from all
+  </FilesMatch>
+  <FilesMatch "^debug_.+\\.txt$">
+    Order allow,deny
+    Deny from all
+  </FilesMatch>
+</IfModule>
