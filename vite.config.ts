@@ -1,8 +1,16 @@
 import path from 'path';
 import { defineConfig } from 'vite';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 export default defineConfig(() => {
   return {
+    plugins: [
+      viteStaticCopy({
+        targets: [
+          { src: 'imagenes_carrusel', dest: '.' },
+        ],
+      }),
+    ],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
