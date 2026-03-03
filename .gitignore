@@ -24,6 +24,7 @@ dist-ssr
 
 # Large archives (avoid pushing to GitHub)
 *.rar
+*.zip
 
 # Fichas técnicas (rutas muy largas en Windows)
 fichas_tecnicas/
