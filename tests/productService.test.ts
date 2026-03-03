@@ -32,21 +32,22 @@ describe('productService.getProducts', () => {
   });
 
   it('mapea correctamente productos cuando la API responde OK', async () => {
+    const apiResponse = {
+      products: [
+        {
+          sku: 'SKU123',
+          name: 'Lámpara prueba',
+          description: 'Desc prueba',
+          price: 99.5,
+          image: 'SKU123.JPG',
+          category: 'Lamparas',
+          stock: 5,
+        },
+      ],
+    };
     global.fetch = vi.fn().mockResolvedValue({
       ok: true,
-      json: async () => ({
-        products: [
-          {
-            sku: 'SKU123',
-            name: 'Lámpara prueba',
-            description: 'Desc prueba',
-            price: 99.5,
-            image: 'SKU123.JPG',
-            category: 'Lamparas',
-            stock: 5,
-          },
-        ],
-      }),
+      text: async () => JSON.stringify(apiResponse),
     } as any);
 
     const products = await getProducts();
