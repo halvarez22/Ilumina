@@ -17,6 +17,11 @@ dist-ssr
 .env.*
 !.env.example
 
+# Tokens y claves (nunca subir)
+*Token*
+*token*
+*API*KEY*
+
 # Large archives (avoid pushing to GitHub)
 *.rar
 
