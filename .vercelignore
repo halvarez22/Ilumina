@@ -1,0 +1,3 @@
+# En Vercel no se usa PHP; las APIs se sirven con las funciones Node (.js).
+# Excluir los .php de api/ para evitar conflicto de rutas con los .js
+api/*.php
