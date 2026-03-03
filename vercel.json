@@ -1,0 +1,11 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite",
+  "rewrites": [
+    { "source": "/api/get_real_products.php", "destination": "/api/get_real_products" },
+    { "source": "/api/gemini_chat.php", "destination": "/api/gemini_chat" },
+    { "source": "/api/get_images.php", "destination": "/api/get_images" },
+    { "source": "/api/serve_image.php", "destination": "/api/serve_image" }
+  ]
+}

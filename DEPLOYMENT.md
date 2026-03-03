@@ -34,7 +34,25 @@ El frontend compilado quedará en la carpeta `dist/`.
    - `GEMINI_API_KEY`
    - `INVENTORY_API_URL`, `INVENTORY_USERNAME`, `INVENTORY_PASSWORD`, `INVENTORY_SSL_VERIFY`
 
-## 4. Flujo recomendado con GitHub
+## 4. Despliegue en Vercel (recomendado, sin PHP)
+
+La app puede desplegarse en **Vercel** usando solo Node.js: el frontend (Vite) y las APIs se sirven como estáticos + serverless.
+
+1. Conecta el repositorio de GitHub con [Vercel](https://vercel.com).
+2. En **Project Settings → Environment Variables** añade:
+   - `GROQ_API_KEY`: tu clave de API de Groq (para el chatbot).
+   - Opcional: `GROQ_MODEL` (por defecto `llama-3.3-70b-versatile`).
+3. Asegúrate de que en el repo existan las carpetas y archivos de datos:
+   - `precios/` (con un CSV de precios, p. ej. `Precios Venta Página.csv`),
+   - `sku_categoria/sku_categoria.csv`,
+   - `fotos/Ductus/` (imágenes JPG de productos).
+4. Despliega: cada push a `main` puede configurarse para hacer deploy automático.
+
+Las rutas `/api/get_real_products.php`, `/api/gemini_chat.php`, `/api/get_images.php` y `/api/serve_image.php` se reescriben internamente a funciones serverless en Node (ver `vercel.json` y carpeta `api/*.js`). No se usa PHP en Vercel.
+
+**Límite:** si `fotos/Ductus/` es muy grande (p. ej. >100 MB), el despliegue puede ser lento o superar límites; en ese caso conviene servir imágenes desde un CDN o almacenamiento externo.
+
+## 5. Flujo recomendado con GitHub
 
 1. Inicializa un repositorio Git local y súbelo a GitHub.
 2. Al hacer push a `main`/`master`, el workflow `.github/workflows/ci.yml` ejecutará:
